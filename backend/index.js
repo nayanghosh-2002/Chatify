@@ -18,11 +18,9 @@ app.use(express.json());
 app.use(cookieParser());
 const corsOption = {
   origin: [
-    "http://localhost:3000",
-    "https://chatify-peach.vercel.app",
-    "https://chatify-frontend-r27k.onrender.com"
+    "https://chatify-peach.vercel.app"
   ],
-  credentials: true
+  credentials: true,
 };
 
 app.use(cors({
