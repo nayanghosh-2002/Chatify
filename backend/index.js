@@ -17,9 +17,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption = {
-  origin: [
-    "https://chatify-peach.vercel.app"
-  ],
+  origin: 'https://chatify-peach.vercel.app',
   credentials: true,
 };
 
