@@ -16,9 +16,12 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
-const corsOption={
-    origin:'http://localhost:3000',
-    credentials:true
+const corsOption = {
+  origin: [
+    "http://localhost:3000",
+    "https://chatify-frontend-bra9.onrender.com" // ✅ your Render frontend domain
+  ],
+  credentials: true
 };
 app.use(cors(corsOption)); 
 
@@ -30,5 +33,5 @@ app.use("/api/v1/message",messageRoute);
 
 server.listen(PORT, ()=>{
     connectDB();
-    console.log(`Server listen at prot ${PORT}`);
+    console.log(`Server listen at port ${PORT}`);
 });

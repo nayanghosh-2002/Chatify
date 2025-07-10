@@ -7,16 +7,21 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
-        origin:['http://localhost:3000'],
+        origin: [
+            "http://localhost:3000",
+            "https://chatify-frontend-bra9.onrender.com" // ✅ After Render frontend deploy
+        ],
+        credentials: true,
         methods:['GET', 'POST'],
     },
 });
+
+const userSocketMap = {}; // {userId->socketId}
 
 export const getReceiverSocketId = (receiverId) => {
     return userSocketMap[receiverId];
 }
 
-const userSocketMap = {}; // {userId->socketId}
 
 
 io.on('connection', (socket)=>{
@@ -34,4 +39,4 @@ io.on('connection', (socket)=>{
 
 })
 
-export {app, io, server};
+export {app, io, server, getReceiverSocketId };
