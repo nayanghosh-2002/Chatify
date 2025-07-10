@@ -9,7 +9,7 @@ const io = new Server(server, {
     cors:{
         origin: [
             "http://localhost:3000",
-            "https://chatify-frontend-bra9.onrender.com" // ✅ After Render frontend deploy
+            "https://chatify-frontend-r27k.onrender.com" 
         ],
         credentials: true,
         methods:['GET', 'POST'],
