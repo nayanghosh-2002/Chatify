@@ -24,7 +24,11 @@ const corsOption = {
   ],
   credentials: true
 };
-app.use(cors(corsOption)); 
+
+app.use(cors({
+  origin: 'https://chatify-peach.vercel.app', 
+  credentials: true
+}));
 
 
 // routes
