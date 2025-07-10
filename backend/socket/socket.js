@@ -39,4 +39,4 @@ io.on('connection', (socket)=>{
 
 })
 
-export {app, io, server, getReceiverSocketId };
+export {app, io, server };
