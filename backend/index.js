@@ -19,7 +19,7 @@ app.use(cookieParser());
 const corsOption = {
   origin: [
     "http://localhost:3000",
-    "https://chatify-frontend-bra9.onrender.com" // ✅ your Render frontend domain
+    "https://chatify-frontend-r27k.onrender.com" // 
   ],
   credentials: true
 };
