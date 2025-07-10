@@ -8,9 +8,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
         origin: [
-            "http://localhost:3000",
-            "https://chatify-peach.vercel.app",
-            "https://chatify-frontend-r27k.onrender.com" 
+            
+            "https://chatify-peach.vercel.app"
+            
         ],
         credentials: true,
         methods:['GET', 'POST'],
