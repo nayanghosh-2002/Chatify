@@ -1,12 +1,12 @@
-import express from 'express';
-import { getOtherUsers, login, logout, register } from '../controllers/userController.js';
-import verifyToken from '../middlewares/verifyToken.js';
+import express from "express";
+import { getOtherUsers, login, logout, register } from "../controllers/userController.js";
+import verifyToken from "../middleware/verifyToken.js"; 
 
 const router = express.Router();
 
-router.post('/register', register);
-router.post('/login', login);
-router.get('/', verifyToken, getOtherUsers); 
-router.get('/logout', logout);
+router.route("/register").post(register);
+router.route("/login").post(login);
+router.route("/logout").post(logout);
+router.route("/").get(verifyToken,getOtherUsers); 
 
 export default router;
