@@ -11,14 +11,16 @@ import { BASE_URL } from '..';
  
 const Sidebar = () => {
     const [search, setSearch] = useState("");
-    const {otherUsers} = useSelector(store=>store.user);
+    
+    const {otherUsers, selectedUser} = useSelector(store=>store.user); 
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.post(`${BASE_URL}/api/v1/user/logout`);
+            
+            const res = await axios.post(`${BASE_URL}/api/v1/user/logout`); 
             navigate("/login");
             toast.success(res.data.message);
             dispatch(setAuthUser(null));
@@ -39,12 +41,14 @@ const Sidebar = () => {
         }
     }
     return (
-        <div className='border-r border-slate-500 p-4 flex flex-col'>
+        
+        <div className={`w-full sm:w-1/3 md:w-1/3 p-4 flex flex-col border-r border-slate-500 ${selectedUser ? 'hidden sm:flex' : 'flex'}`}>
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
                 <input
                     value={search}
                     onChange={(e)=>setSearch(e.target.value)}
-                    className='input input-bordered rounded-md' type="text"
+                    className='input input-bordered rounded-md w-full' // Made input full width
+                    type="text"
                     placeholder='Search...'
                 />
                 <button type='submit' className='btn bg-zinc-700 text-white'>
@@ -54,10 +58,10 @@ const Sidebar = () => {
             <div className="divider px-3"></div> 
             <OtherUsers/> 
             <div className='mt-2'>
-                <button onClick={logoutHandler} className='btn btn-sm'>Logout</button>
+                <button onClick={logoutHandler} className='btn btn-sm w-full'>Logout</button> 
             </div>
         </div>
     )
 }
 
-export default Sidebar
+export default Sidebar;
